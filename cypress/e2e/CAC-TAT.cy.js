@@ -38,5 +38,11 @@ describe("Central de atendimento ao cliente TAT", () => {
       .should("contain", "Valide os campos obrigatórios!");
   });
 
+  it("valida telefone não aceita valores não numéricos", () => {
+    cy.get("#phone").type("abc");
+    cy.get("button[type=submit]").contains("Enviar").click();
+    cy.get(".error").should("be.visible");
+  });
+
   // it("", () => {});
 });
