@@ -44,5 +44,19 @@ describe("Central de atendimento ao cliente TAT", () => {
     cy.get(".error").should("be.visible");
   });
 
+  it("exibe mensagem de erro quando o telefone se torna obrigatório  mas não é preenchido antes do envio do formulário", () => {
+    cy.get("#firstName").type("Lucas");
+    cy.get("#lastName").type("Silva");
+    cy.get("#email").type("emailteste@gmail.com");
+    cy.get("#phone-checkbox").check();
+
+    cy.get("#open-text-area").type(longText, { delay: 0 });
+
+    cy.get("button[type=submit]").contains("Enviar").click();
+    cy.get(".error")
+      .should("be.visible")
+      .should("contain", "Valide os campos obrigatórios!");
+  });
+
   // it("", () => {});
 });
