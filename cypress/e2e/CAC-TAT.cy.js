@@ -58,5 +58,25 @@ describe("Central de atendimento ao cliente TAT", () => {
       .should("contain", "Valide os campos obrigatórios!");
   });
 
+  it("preenche e limpa campos nome , sobrenome, email e telefone", () => {
+    cy.get("#firstName")
+      .type("Lucas")
+      .should("have.value", "Lucas")
+      .clear()
+      .should("have.value", "");
+    cy.get("#lastName")
+      .type("Silva")
+      .should("have.value", "Silva")
+      .clear()
+      .should("have.value", "");
+    cy.get("#email")
+      .type("emailteste@gmail.com")
+      .should("have.value", "emailteste@gmail.com")
+      .clear()
+      .should("have.value", "");
+    cy.get("#phone-checkbox").check();
+    cy.get("#phone").type("123456789").clear().should("have.value", "");
+  });
+
   // it("", () => {});
 });
