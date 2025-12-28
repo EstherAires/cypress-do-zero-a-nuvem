@@ -25,5 +25,18 @@ describe("Central de atendimento ao cliente TAT", () => {
       .should("contain", "Mensagem enviada com sucesso.");
   });
 
+  it("exibe mensagem de erro ao submeter o formulário com um email com formatação inválida", () => {
+    cy.get("#firstName").type("Lucas");
+    cy.get("#lastName").type("Silva");
+    cy.get("#email").type("emailtestegmail.com");
+
+    cy.get("#open-text-area").type(longText, { delay: 0 });
+
+    cy.get("button[type=submit]").contains("Enviar").click();
+    cy.get(".error")
+      .should("be.visible")
+      .should("contain", "Valide os campos obrigatórios!");
+  });
+
   // it("", () => {});
 });
