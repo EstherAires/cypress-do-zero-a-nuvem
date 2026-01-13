@@ -1,9 +1,19 @@
-Cypress.Commands.add("fillMandatoryFieldsAndSubmit", () => {
-  cy.get("#firstName").type("Lucas");
-  cy.get("#lastName").type("Silva");
-  cy.get("#email").type("emailteste@gmail.com");
+Cypress.Commands.add(
+  "fillMandatoryFieldsAndSubmit",
+  (
+    data = {
+      firstName: "Kevin",
+      lastName: "Ninsy",
+      email: "emaildefault@gmail.com",
+      feedback: "Teste defalt.",
+    }
+  ) => {
+    cy.get("#firstName").type(data.firstName);
+    cy.get("#lastName").type(data.lastName);
+    cy.get("#email").type(data.email);
 
-  cy.get("#open-text-area").type("Teste.");
+    cy.get("#open-text-area").type(data.feedback);
 
-  cy.get("button[type=submit]").contains("Enviar").click();
-});
+    cy.get("button[type=submit]").contains("Enviar").click();
+  }
+);
