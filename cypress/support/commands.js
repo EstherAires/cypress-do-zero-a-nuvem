@@ -14,6 +14,6 @@ Cypress.Commands.add(
 
     cy.get("#open-text-area").type(data.feedback);
 
-    cy.get("button[type=submit]").contains("Enviar").click();
+    cy.contains("button", "Enviar").click();
   }
 );

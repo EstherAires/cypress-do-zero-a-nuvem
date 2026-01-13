@@ -19,7 +19,7 @@ describe("Central de atendimento ao cliente TAT", () => {
     cy.get("#open-text-area").type(longText, { delay: 0 }); //retira o delay de digitação
 
     //clicar no botão de enviar
-    cy.get("button[type=submit]").contains("Enviar").click();
+    cy.contains("button", "Enviar").click();
     cy.get(".success")
       .should("be.visible")
       .should("contain", "Mensagem enviada com sucesso.");
@@ -32,7 +32,7 @@ describe("Central de atendimento ao cliente TAT", () => {
 
     cy.get("#open-text-area").type(longText, { delay: 0 });
 
-    cy.get("button[type=submit]").contains("Enviar").click();
+    cy.contains("button", "Enviar").click();
     cy.get(".error")
       .should("be.visible")
       .should("contain", "Valide os campos obrigatórios!");
